@@ -7,7 +7,11 @@
   <title>Document</title>
 </head>
 <body>
-  欢迎，{{.Name}} 
+  {{if .account}}
+    欢迎，{{.account.Username}}
+  {{else}}
+    未登录！<a href="/login" >登录</a>
+  {{end}}
 
   <script src='/static/jquery.js'></script>
 </body>

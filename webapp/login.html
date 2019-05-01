@@ -1,20 +1,28 @@
 <html>
   <body>
-    <form id="loginForm" action="/doLogin" method="POST" >
-      <label>用户名：</label><input name="username" >
-      <label>密码：</label><input name="password" placeholder="密码" type="password" >
-      <button type="submit">登录</button>
-    </form>
+    <div id="loginForm" >
+      <label>用户名：</label><input id="username" name="username" >
+      <label>密码：</label><input id="password" name="password" placeholder="密码" type="password" >
+      <button id="submit" type="submit">登录</button>
+    </div>
 
+    <script src='/static/jquery.js'></script>
     <script>
-      // const loginForm=document.getElementById("loginForm")
-      // loginForm.onsubmit = e=>{
-      //   const form = new FormData();
-      //   for (const input of loginForm.elements){
-      //     form.append(input.name, input.value); 
-      //   }
-      //   console.log(form)
-      // }
+      $(async ()=>{
+        $("#submit").click(async ()=>{
+          $.post("/doLogin", {
+            username: $("#username").val(),
+            password: $("#password").val()
+          }, (data)=>{
+            // { state: 'ok'|'fail', msg: "xxxxxxxxxx" }
+            if(data.state==='ok'){
+              window.location.href='/'
+            }else{
+              alert(data.msg)
+            }
+          }, 'json')
+        })
+      })
     </script>
   </body>
 </html>
