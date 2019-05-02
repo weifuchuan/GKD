@@ -1,9 +1,9 @@
 package handler
 
 import (
-	"GKD/db"
-	"GKD/session"
 	"github.com/gin-gonic/gin"
+	"github.com/weifuchuan/GKD/db"
+	"github.com/weifuchuan/GKD/session"
 )
 
 type any = interface {

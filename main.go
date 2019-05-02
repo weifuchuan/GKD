@@ -1,12 +1,14 @@
 package main
 
 import (
-	"GKD/handler"
-	"GKD/session"
 	"github.com/gin-gonic/gin"
+	"github.com/weifuchuan/GKD/handler"
+	"github.com/weifuchuan/GKD/session"
 )
 
 // server: responce = handle(request)
+// responce = handle...(request) ->
+// client -> req -> | -> | -> addCar
 
 func main() {
 	server := gin.Default()

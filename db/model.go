@@ -1,6 +1,6 @@
 package db
 
-import "GKD/kit"
+import "github.com/weifuchuan/GKD/kit"
 
 type Account struct {
 	Id       int64  `json:"id"`
@@ -25,7 +25,6 @@ func (this *Account) IsUser() bool {
 
 type Order struct {
 	Id int64 `json:"id"`
-
 }
 
 type Car struct {

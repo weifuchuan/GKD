@@ -1,4 +1,4 @@
-module GKD
+module github.com/weifuchuan/GKD
 
 go 1.12
 
