@@ -10,7 +10,7 @@ type any = interface {
 }
 
 func Login(c *gin.Context) {
-	c.HTML(200, "login.html", nil)
+	c.HTML(200, "login01.html", nil)
 }
 
 func DoLogin(c *gin.Context) {
@@ -34,7 +34,6 @@ func DoLogin(c *gin.Context) {
 		ret["state"] = "fail"
 		ret["msg"] = "用户不存在"
 	}
-
 
 	c.JSON(200, ret)
 }

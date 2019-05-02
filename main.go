@@ -13,10 +13,10 @@ func main() {
 
 	server.Use(session.Middleware)
 
-	server.LoadHTMLGlob("webapp/*")
+	server.LoadHTMLGlob("templates/*")
 
 	// /static/js/jjj.js
-	server.Static("/static", "./webapp")
+	server.Static("/static", "resources")
 
 	server.GET("/", handler.Index)
 	server.GET("/login", handler.Login)
