@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <title>登录</title>
+    <link rel="stylesheet" href="/static/css/layui.css" media="all">
+    <link rel="stylesheet" href="/static/login/login.css" media="all">
+</head>
+<body>
+<div class="kit-login">
+    <div class="kit-login-bg"></div>
+    <div class="kit-login-wapper">
+        <h2 class="kit-login-slogan">欢迎使用 <br> GKD物流管理系统</h2>
+        <div class="kit-login-form">
+            <h4 class="kit-login-title">登录</h4>
+            <div class="layui-form">
+                <div class="kit-login-row">
+                    <div class="kit-login-col">
+                        <i class="layui-icon">&#xe612;</i>
+                        <span class="kit-login-input">
+                <input  id="username" type="text" name="loginName" lay-verify="required" placeholder="用户名" />
+              </span>
+                    </div>
+                    <div class="kit-login-col"></div>
+                </div>
+                <div class="kit-login-row">
+                    <div class="kit-login-col">
+                        <i class="layui-icon">&#xe64c;</i>
+                        <span class="kit-login-input">
+                <input type="password" id="password" name="password" lay-verify="required" placeholder="密码" />
+              </span>
+                    </div>
+                    <div class="kit-login-col"></div>
+                </div>
+
+                <div class="kit-login-row">
+                    <div class="kit-login-col">
+                        <input type="radio" name="check" title="用户"  checked>
+                        <input type="radio" name="check" title="员工" >
+                        <input type="radio" name="check" title="管理员" >
+                    </div>
+                </div>
+                <div class="kit-login-row">
+                    <button class="layui-btn kit-login-btn" type="submit" id="submit">登录</button>
+                </div>
+                <div class="kit-login-row" style="margin-bottom:0;">
+                    <a href="javascript:;" style="color: rgb(153, 153, 153); text-decoration: none; font-size: 13px;" id="forgot">忘记密码</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<SCRIPT src="/static/layui.all.js"></SCRIPT>
+<script src='/static/jquery.js'></script>
+<script src="/static/layui.js" charset="utf-8"></script>
+<script>
+    layui.use(['layer', 'form'], function() {
+        var form = layui.form,
+            $ = layui.jquery;
+        // form.render();
+    });
+    // $('#forgot').on('click', function () {
+    //     layer.msg('请联系管理员.');
+    // });
+    $(async () => {
+        $("#submit").click(async () => {
+            $.post("/doLogin", {
+                username: $("#username").val(),
+                password: $("#password").val()
+            }, (data) => {
+                // { state: 'ok'|'fail', msg: "xxxxxxxxxx" }
+                if (data.state === 'ok') {
+                    window.location.href = '/'
+                } else {
+                    layer.msg(data.msg)
+                }
+            }, 'json')
+        })
+    })
+        // 监听提交
+        // form.on('submit(login_hash)', function(data) {
+        //     layer.msg(JSON.stringify(data.field));
+        //     setTimeout(function(){
+        //         location.href='/';
+        //     },1000);
+        //
+        //     return false;
+        // });
+
+</script>
+</body>
+</html>
